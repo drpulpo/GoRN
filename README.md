@@ -36,12 +36,19 @@ Press W for Web Client
 
 Web is waiting on http://localhost:8081
 
-npm run exportToBackend
+---
 
-Then restart the Docker Compose
+For building frontend
+
+npm run build:web
+
+Then restart the Docker Compose at the root
 
 cd ..
 
-cd gorn-backend
-
 docker-compose up --build
+
+Postgres runs at :5432
+PGAdmin runs at :5050
+Backend runs at :8080
+Frontend runs at :3000

@@ -44,3 +44,6 @@ ALTER TABLE public."user"
 
 ALTER TABLE public."order"
     OWNER to pgndsusa;
+
+INSERT INTO public."order" (firstname, lastname, phone, city, postalcode, state, country, crayon00, crayon01, crayon02, crayon03, crayon04, crayon05, crayon06, crayon07, crayon08, crayon09, crayon10, crayon11, crayon12, crayon13, crayon14, crayon15, crayon16, crayon17, crayon18, crayon19)
+VALUES ('firstname00','lastname00','+1 555 555 5555','city00','72000','ST','CO','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF')

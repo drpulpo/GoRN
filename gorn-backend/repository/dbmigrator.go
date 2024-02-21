@@ -11,11 +11,11 @@ import (
 )
 
 const (
-	hostname     = "fullstack-postgres"
+	hostname     = "gorn-postgres"
 	hostport     = 5432
 	username     = "pgndsusa"
 	password     = "password"
-	databasename = "fullstack_api"
+	databasename = "gorn"
 )
 
 // MigrateDb migrates scripts present in /db/migrations(on container) during app startup

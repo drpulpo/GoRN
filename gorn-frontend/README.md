@@ -18,4 +18,9 @@ Download Expo Go application for Android or iOS and Scan QR code
 
 Press W for Web Client
 
-Web is waiting on http://localhost:8081
+Web is waiting on http://localhost:8081 for dev with live reload
+
+To build do
+npm run build:web
+
+The bundles will be at dist directory

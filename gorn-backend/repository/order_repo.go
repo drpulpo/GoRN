@@ -11,7 +11,7 @@ import (
 
 // GetUserData gets user data for a given id.
 func GetOrderData(id int) (model.Order, error) {
-	connString := `postgres://pgndsusa:password@fullstack-postgres:5432/fullstack_api`
+	connString := `postgres://pgndsusa:password@gorn-postgres:5432/gorn`
 	conn, err := pgx.Connect(context.Background(), connString)
 
 	if err != nil {
@@ -65,7 +65,7 @@ func GetOrderData(id int) (model.Order, error) {
 // InsertRecord inserts a user into postgres db
 func InsertOrder(order model.Order) {
 	log.Printf("value is %+v", order)
-	connString := `postgres://pgndsusa:password@fullstack-postgres:5432/fullstack_api`
+	connString := `postgres://pgndsusa:password@gorn-postgres:5432/gorn`
 	conn, err := pgx.Connect(context.Background(), connString)
 
 	if err != nil {
@@ -165,7 +165,7 @@ func InsertOrder(order model.Order) {
 
 // get one user from the DB by its userid
 func GetAllOrders() ([]model.Order, error) {
-	connString := `postgres://pgndsusa:password@fullstack-postgres:5432/fullstack_api`
+	connString := `postgres://pgndsusa:password@gorn-postgres:5432/gorn`
 	conn, err := pgx.Connect(context.Background(), connString)
 
 	if err != nil {
@@ -268,7 +268,7 @@ func GetAllOrders() ([]model.Order, error) {
 // delete user in the DB
 func DeleteOrder(id int) (int64, error) {
 
-	connString := `postgres://pgndsusa:password@fullstack-postgres:5432/fullstack_api`
+	connString := `postgres://pgndsusa:password@gorn-postgres:5432/gorn`
 	conn, err := pgx.Connect(context.Background(), connString)
 
 	if err != nil {

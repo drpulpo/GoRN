@@ -1,22 +1,35 @@
 version: '3'
 services:
-  app:
-    container_name: full_app
-    build: .
+  gorn-backend:
+    container_name: gorn-backend
+    build: ./gorn-backend
     ports: 
       - 8080:8080 
     restart: on-failure
     volumes:
       - api:/usr/src/app/
     depends_on:
-      - fullstack-postgres          # Uncomment this when using postgres.
+      - gorn-postgres          
+    networks:
+      - fullstack
+
+  gorn-frontend:
+    container_name: gorn-frontend
+    build: ./gorn-frontend
+    ports: 
+      - 3000:3000 
+    restart: on-failure
+    volumes:
+      - hosting:/usr/src/app/
+    depends_on:
+      - gorn-postgres          
     networks:
       - fullstack
 
 
-  fullstack-postgres:
+  gorn-postgres:
     image: postgres:latest
-    container_name: full_db_postgres
+    container_name: gorn-postgres
     environment:
       - POSTGRES_USER=${DB_USER}  
       - POSTGRES_PASSWORD=${DB_PASSWORD}
@@ -29,14 +42,14 @@ services:
     networks:
       - fullstack
     
-  pgadmin:
+  gorn-pgadmin:
     image: dpage/pgadmin4
-    container_name: pgadmin_container
+    container_name: gorn-pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
     depends_on:
-      - fullstack-postgres
+      - gorn-postgres
     ports:
       - "5050:80"
     networks:
@@ -45,8 +58,9 @@ services:
 
 volumes:
   api:
+  hosting:
   database_postgres:                 
-# Networks to be created to facilitate communication between containers
+
 networks:
   fullstack:
     driver: bridge
