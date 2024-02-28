@@ -22,7 +22,7 @@ func GetOrderData(id int) (model.Order, error) {
 
 	var order model.Order
 
-	err = conn.QueryRow(context.Background(), `select id, firstname, lastname, phone, email, city, postalcode, state, country, crayon00, crayon01, crayon02, crayon03, crayon04, crayon05, crayon06, crayon07, crayon08, crayon09, crayon10, crayon11, crayon12, crayon13, crayon14, crayon15, crayon16, crayon17, crayon18, crayon19 from public.order where id = $1;`, id).
+	err = conn.QueryRow(context.Background(), `select id, firstname, lastname, phone, email, address1, address2, city, postalcode, state, country, crayon00, crayon01, crayon02, crayon03, crayon04, crayon05, crayon06, crayon07, crayon08, crayon09, crayon10, crayon11, crayon12, crayon13, crayon14, crayon15, crayon16, crayon17, crayon18, crayon19 from public.order where id = $1;`, id).
 		Scan(
 			&order.Id,
 			&order.Firstname,
