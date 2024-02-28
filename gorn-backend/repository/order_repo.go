@@ -11,7 +11,7 @@ import (
 
 // GetUserData gets user data for a given id.
 func GetOrderData(id int) (model.Order, error) {
-	connString := `postgres://pgndsusa:password@gorn-postgres:5432/gorn`
+	connString := `postgres://gorn:password@gorn-postgres:5432/gorn`
 	conn, err := pgx.Connect(context.Background(), connString)
 
 	if err != nil {
@@ -22,12 +22,15 @@ func GetOrderData(id int) (model.Order, error) {
 
 	var order model.Order
 
-	err = conn.QueryRow(context.Background(), `select id, firstname, lastname, phone, city, postalcode, state, country, crayon00, crayon01, crayon02, crayon03, crayon04, crayon05, crayon06, crayon07, crayon08, crayon09, crayon10, crayon11, crayon12, crayon13, crayon14, crayon15, crayon16, crayon17, crayon18, crayon19 from public.order where id = $1;`, id).
+	err = conn.QueryRow(context.Background(), `select id, firstname, lastname, phone, email, city, postalcode, state, country, crayon00, crayon01, crayon02, crayon03, crayon04, crayon05, crayon06, crayon07, crayon08, crayon09, crayon10, crayon11, crayon12, crayon13, crayon14, crayon15, crayon16, crayon17, crayon18, crayon19 from public.order where id = $1;`, id).
 		Scan(
 			&order.Id,
 			&order.Firstname,
 			&order.Lastname,
+			&order.Email,
 			&order.Phone,
+			&order.Address1,
+			&order.Address2,
 			&order.City,
 			&order.PostalCode,
 			&order.State,
@@ -65,7 +68,7 @@ func GetOrderData(id int) (model.Order, error) {
 // InsertRecord inserts a user into postgres db
 func InsertOrder(order model.Order) {
 	log.Printf("value is %+v", order)
-	connString := `postgres://pgndsusa:password@gorn-postgres:5432/gorn`
+	connString := `postgres://gorn:password@gorn-postgres:5432/gorn`
 	conn, err := pgx.Connect(context.Background(), connString)
 
 	if err != nil {
@@ -78,6 +81,9 @@ func InsertOrder(order model.Order) {
 		firstname,
 		lastname,
 		phone,
+		email,
+		address1,
+		address2,
 		city,
 		postalcode,
 		state,
@@ -128,10 +134,16 @@ func InsertOrder(order model.Order) {
 			$24,
 			$25,
 			$26,
-			$27);`,
+			$27,
+			$28,
+			$29,
+			$30);`,
 		order.Firstname,
 		order.Lastname,
 		order.Phone,
+		order.Email,
+		order.Address1,
+		order.Address2,
 		order.City,
 		order.PostalCode,
 		order.State,
@@ -165,7 +177,7 @@ func InsertOrder(order model.Order) {
 
 // get one user from the DB by its userid
 func GetAllOrders() ([]model.Order, error) {
-	connString := `postgres://pgndsusa:password@gorn-postgres:5432/gorn`
+	connString := `postgres://gorn:password@gorn-postgres:5432/gorn`
 	conn, err := pgx.Connect(context.Background(), connString)
 
 	if err != nil {
@@ -195,6 +207,9 @@ func GetAllOrders() ([]model.Order, error) {
 			&order.Firstname,
 			&order.Lastname,
 			&order.Phone,
+			&order.Email,
+			&order.Address1,
+			&order.Address2,
 			&order.City,
 			&order.PostalCode,
 			&order.State,
@@ -268,7 +283,7 @@ func GetAllOrders() ([]model.Order, error) {
 // delete user in the DB
 func DeleteOrder(id int) (int64, error) {
 
-	connString := `postgres://pgndsusa:password@gorn-postgres:5432/gorn`
+	connString := `postgres://gorn:password@gorn-postgres:5432/gorn`
 	conn, err := pgx.Connect(context.Background(), connString)
 
 	if err != nil {

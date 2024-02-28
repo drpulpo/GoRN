@@ -12,6 +12,9 @@ CREATE TABLE public."order"
     firstname  text NOT NULL,
     lastname  text NOT NULL,
     phone  text NOT NULL,
+    email text NOT NULL,
+    address1 text NOT NULL,
+    address2 text NOT NULL,
     city  text NOT NULL,
     postalcode text NOT NULL,
     state text NOT NULL,
@@ -40,10 +43,10 @@ CREATE TABLE public."order"
 );
 
 ALTER TABLE public."user"
-    OWNER to pgndsusa;
+    OWNER to gorn;
 
 ALTER TABLE public."order"
-    OWNER to pgndsusa;
+    OWNER to gorn;
 
-INSERT INTO public."order" (firstname, lastname, phone, city, postalcode, state, country, crayon00, crayon01, crayon02, crayon03, crayon04, crayon05, crayon06, crayon07, crayon08, crayon09, crayon10, crayon11, crayon12, crayon13, crayon14, crayon15, crayon16, crayon17, crayon18, crayon19)
-VALUES ('firstname00','lastname00','+1 555 555 5555','city00','72000','ST','CO','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF')
+INSERT INTO public."order" (firstname, lastname, phone, email, address1, address2, city, postalcode, state, country, crayon00, crayon01, crayon02, crayon03, crayon04, crayon05, crayon06, crayon07, crayon08, crayon09, crayon10, crayon11, crayon12, crayon13, crayon14, crayon15, crayon16, crayon17, crayon18, crayon19)
+VALUES ('firstname00','lastname00','+1 555 555 5555', 'email@server.com','address1','address2','city00','72000','ST','CO','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF','#000000','#FFFFFF')

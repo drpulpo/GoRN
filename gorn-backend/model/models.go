@@ -5,6 +5,9 @@ type Order struct {
 	Firstname  string
 	Lastname   string
 	Phone      string
+	Email      string
+	Address1   string
+	Address2   string
 	City       string
 	PostalCode string
 	State      string

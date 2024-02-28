@@ -13,7 +13,7 @@ import (
 const (
 	hostname     = "gorn-postgres"
 	hostport     = 5432
-	username     = "pgndsusa"
+	username     = "gorn"
 	password     = "password"
 	databasename = "gorn"
 )

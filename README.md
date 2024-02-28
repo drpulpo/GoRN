@@ -1,10 +1,15 @@
-# GoRN Backend
+# GoRN Docker Composed Fullstack Environment
 
-Go based backend wich access Postgres
+1 Docker Container for Postgres
+1 Docker Container for pgAdmin (Web)
+1 Docker Container for Go written Backend API
+1 Docker Container for Typescript written Frontend React Native Web Expo Server
 
-# Go React Native CRUD with Postgres
+\*Extra: Development tools for Expo Go React Native for Android and iOS using QR code
 
-CRUD App made with Go + React Native (Expo). Uses Postgres container
+# Go React Native Expo CRUD with Postgres
+
+CRUD App made with Go + React Native Expo. Uses Postgres container and pgAdmin Web container
 
 # docker compose commands
 
@@ -49,6 +54,11 @@ cd ..
 docker-compose up --build
 
 Postgres runs at :5432
+
 PGAdmin runs at :5050
+admin@domain.com
+password
+
 Backend runs at :8080
+
 Frontend runs at :3000
